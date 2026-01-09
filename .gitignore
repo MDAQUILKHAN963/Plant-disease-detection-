@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+
+# Models
+*.h5
+*.tflite
+*.pt
+*.pth
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/build/
+.eslintcache
+
+# Project Specific
+data/
+backend/plant_disease_model.h5
+!data/samples/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
