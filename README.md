@@ -1,6 +1,19 @@
 # Plant Disease Detection System
 
+![Status](https://img.shields.io/badge/status-active-success.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![React](https://img.shields.io/badge/react-18-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 An AI-powered web application that identifies plant diseases from leaf images using deep learning. This system leverages transfer learning with MobileNetV2 to classify plant diseases across common crops including apples, potatoes, and tomatoes.
+
+## 🚀 Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/MDAQUILKHAN963/Plant-disease-detection-.git
+   cd Plant-disease-detection-
+   ```
 
 ## Features
 
