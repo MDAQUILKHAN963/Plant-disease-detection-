@@ -6,8 +6,9 @@ from PIL import Image
 import io
 import tensorflow as tf
 import os
+import random  # Moved to top level
 
-app = FastAPI()
+app = FastAPI(title="Plant Disease Detection API", version="1.0.0")
 
 # Enable CORS for frontend
 app.add_middleware(
@@ -31,10 +32,14 @@ CLASS_NAMES = [
 ]
 
 def load_model():
+    """Loads the TensorFlow model if available."""
     global model
     if os.path.exists(MODEL_PATH):
-        model = tf.keras.models.load_model(MODEL_PATH)
-        print("Model loaded.")
+        try:
+            model = tf.keras.models.load_model(MODEL_PATH)
+            print("Model loaded successfully.")
+        except Exception as e:
+            print(f"Error loading model: {e}")
     else:
         print("Model file not found. Running in demo mode with random predictions.")
 
@@ -46,7 +51,8 @@ async def startup_event():
 async def ping():
     return "Hello, I am alive"
 
-def read_file_as_image(data) -> np.ndarray:
+def read_file_as_image(data: bytes) -> np.ndarray:
+    """Converts raw bytes to a numpy array image."""
     image = np.array(Image.open(io.BytesIO(data)))
     return image
 
@@ -65,7 +71,6 @@ async def predict(file: UploadFile = File(...)):
         confidence = np.max(predictions[0])
     else:
         # Demo mode: Random prediction if no model is found
-        import random
         predicted_class = random.choice(CLASS_NAMES)
         confidence = random.uniform(0.85, 0.99)
 
